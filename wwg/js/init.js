@@ -20,7 +20,7 @@ $(document).ready(function () {
       onAutocomplete: function (data) {
         // console.log('got ', data);
         selected_player = data;
-        table.column([1])
+        table.column([2])
           .search(data ? '^' + data + '$' : '', true, false)
           .draw();
         // Games Played 	Win % 	Wins 	Losses 	Survival Rate 	Avg Round Killed
@@ -46,7 +46,7 @@ $(document).ready(function () {
             { "data": "rdSurvived" },
           ],
           "columnDefs": [
-            { "visible": false, "targets": [0, 4] }
+            { "visible": false, "targets": [0, 5] }
           ],
           "initComplete": function () {
             $('.tooltipped').tooltip();
@@ -211,6 +211,7 @@ $(document).ready(function () {
       "data": jsonData.data,
       "columns": [
         { "data": "Game #" },
+        { "data": "Game Name"},
         { "data": "Player" },
         { "data": "Role" },
         { "data": "Fate" },
@@ -229,7 +230,7 @@ $(document).ready(function () {
             else
               return data;
           },
-          "targets": 3
+          "targets": 4
         },
         { "visible": false, "targets": [4] },
         {
@@ -240,7 +241,7 @@ $(document).ready(function () {
             return '<a target="_blank" href="https://www.braingle.com/games/werewolf/game.php?id=' + data + '">' + data + '</a>';
           },
           "targets": 0
-        }
+        },
       ]
     });
   }
